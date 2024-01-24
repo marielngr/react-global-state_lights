@@ -14,9 +14,14 @@ const StyledLights = styled.ul`
 export default function Lights({ lights, onToggle }) {
   return (
     <StyledLights>
-      {lights?.map((light) => (
+      {lights.map((light) => (
         <li key={light.id}>
-          <Light name={light.name} isOn={light.isOn} onToggle={onToggle} />
+          <Light
+            name={light.name}
+            isOn={light.isOn}
+            onToggle={onToggle}
+            id={light.id}
+          />
         </li>
       ))}
     </StyledLights>
