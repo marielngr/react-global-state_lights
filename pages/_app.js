@@ -26,12 +26,30 @@ export default function App({ Component, pageProps }) {
     );
   }
 
+  function turnAllLightsOn() {
+    setWalter(
+      walter.map((light) => {
+        return { ...light, isOn: true };
+      })
+    );
+  }
+
+  function turnAllLightsOff() {
+    setWalter(
+      walter.map((light) => {
+        return { ...light, isOn: false };
+      })
+    );
+  }
+
   return (
     <Layout>
       <GlobalStyle />
       <Component
         lights={walter}
         toggleLight={handleToggleLight}
+        turnAllLightsOn={turnAllLightsOn}
+        turnAllLightsOff={turnAllLightsOff}
         {...pageProps}
       />
     </Layout>
