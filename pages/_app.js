@@ -26,20 +26,20 @@ export default function App({ Component, pageProps }) {
     );
   }
 
-  function turnAllLightsOn() {
+  function turnAllLights(newState) {
     setWalter(
       walter.map((light) => {
-        return { ...light, isOn: true };
+        return { ...light, isOn: newState };
       })
     );
   }
 
   function turnAllLightsOff() {
-    setWalter(
-      walter.map((light) => {
-        return { ...light, isOn: false };
-      })
-    );
+    turnAllLights(false);
+  }
+
+  function turnAllLightsOn() {
+    turnAllLights(true);
   }
 
   return (
@@ -48,8 +48,10 @@ export default function App({ Component, pageProps }) {
       <Component
         lights={walter}
         toggleLight={handleToggleLight}
-        turnAllLightsOn={turnAllLightsOn}
-        turnAllLightsOff={turnAllLightsOff}
+        // turnAllLightsOn={turnAllLightsOn}
+        // turnAllLightsOff={turnAllLightsOff}
+        turnAllLightsOn={() => turnAllLights(true)}
+        turnAllLightsOff={() => turnAllLights(false)}
         {...pageProps}
       />
     </Layout>
